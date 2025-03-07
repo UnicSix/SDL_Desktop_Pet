@@ -34,6 +34,8 @@
 *build/
 .cache/
 
+# CMake
+
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
@@ -46,3 +48,8 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 CMakeUserPresets.json
+
+# Personal Files
+
+char_chiikawa_full.png
+chii_lolipop.png
