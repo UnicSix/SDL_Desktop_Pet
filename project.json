@@ -1,0 +1,13 @@
+{
+    "id": "Desktop pet",
+    "type": "application",
+    "value": {
+        "author": "Unic Six",
+        "description": "A desktop pet made with sdl3 and flecs",
+        "use": [
+            "flecs"
+        ],
+        "language": "c++"
+    }
+}
+

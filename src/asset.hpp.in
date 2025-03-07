@@ -1,0 +1,5 @@
+namespace asset {
+#define SHADER_DIR  "@CMAKE_SOURCE_DIR@/res/shaders"
+#define FONT_DIR    "@CMAKE_SOURCE_DIR@/res/fonts"
+#define TEXTURE_DIR "@CMAKE_SOURCE_DIR@/res/textures"
+}
