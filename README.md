@@ -1,4 +1,4 @@
-# 
+# Compile the pet
 - In my use case, I have SDL3, SDL_ttf, SDL_image compiled and installed in my computer,  
 if you want to create a new build dir and use cmake .. command directly, make sure you've done the same  
 so find_package can run without errors.
