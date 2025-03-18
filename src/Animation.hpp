@@ -1,7 +1,7 @@
+#pragma once
 #include "SDL3/SDL_rect.h"
 #include <SDL3_image/SDL_image.h>
 #include <gsl/zstring>
-
 
 typedef struct SheetLayout {
   int row;
@@ -16,13 +16,15 @@ public:
   Animation();
   ~Animation();
 
-  void NextFrame(double delta);
+  void NextFrame(const double delta);
+  bool Play();
 
-  // assume all frames' size are the same
+  // assuming all frames' size are the same
   SDL_FRect _srect;
   SDL_FRect _drect;
   SheetLayout _layout;
   int _curFcnt;
-  int _delay; // ms
+  int _delay;         // ms
   int _frameDuration; // indicate the duration of the current frame
+  bool flipped;
 };

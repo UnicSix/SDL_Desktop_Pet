@@ -27,7 +27,19 @@ set(BoldRed     "${Esc}[1;31m")
 set(BoldGreen   "${Esc}[1;32m")
 set(BoldYellow  "${Esc}[1;33m")
 
+find_package(fmt REQUIRED)
+if(fmt_FOUND)
+  message(STATUS "fmt found")
+endif()
+find_package(spdlog REQUIRED)
+if (spdlog_FOUND)
+  message( STATUS "spdlog Found")
+  message(STATUS "Spdlog include dir : ${spdlog_DIR}")
+else()
+  message( STATUS "spdlog Not Found")
+endif()
 include( FetchContent )
+
 FetchContent_Declare(
   microsoft-gsl
   GIT_REPOSITORY "https://github.com/microsoft/GSL.git"
@@ -78,6 +90,8 @@ target_link_libraries(${PROJECT_NAME}
   PRIVATE Microsoft.GSL::GSL
   PRIVATE flecs::flecs
   PRIVATE nlohmann_json::nlohmann_json
+  PRIVATE spdlog
+  PRIVATE fmt::fmt
 )
 
 configure_file(
@@ -90,11 +104,11 @@ target_include_directories(${PROJECT_NAME}
   PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/src
 )
 
-add_custom_command(TARGET sdl_dekstop_pet POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${SDL3_DIR}/../../../bin/SDL3.dll"
-        "${SDL3_image_DIR}/../../../bin/SDL3_image.dll"
-#         "C:/Program Files/flecs/bin/flecs.dll"
-        $<TARGET_FILE_DIR:sdl_dekstop_pet>
-)
-
+# add_custom_command(TARGET sdl_dekstop_pet POST_BUILD
+#     COMMAND ${CMAKE_COMMAND} -E copy_if_different
+#         "${SDL3_DIR}/../../../bin/SDL3.dll"
+#         "${SDL3_image_DIR}/../../../bin/SDL3_image.dll"
+# #         "C:/Program Files/flecs/bin/flecs.dll"
+#         $<TARGET_FILE_DIR:sdl_dekstop_pet>
+# )
+#

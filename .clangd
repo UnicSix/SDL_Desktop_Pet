@@ -1,7 +1,8 @@
 CompileFlags:
-  CompilationDatabase: build/
+  CompilationDatabase: win10-build/
   Add:
     - "--std=c++20"
+    # - "-Wno-pragma-pack"
     # - "--target=x86_64-w64-windows-gnu"
     # - "--include-directory=C:/msys64/mingw64/include"
     # - "--include-directory=C:/msys64/mingw64/include/c++/14.2.0"

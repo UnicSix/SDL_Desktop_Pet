@@ -1,4 +1,5 @@
-#include "Animation.h"
+#include "Animation.hpp"
+#include "PetEnum.hpp"
 #include <SDL3_image/SDL_image.h>
 #include <cstdio>
 
@@ -9,20 +10,18 @@ Animation::Animation() {
   _curFcnt = 0;
   _delay = 150;
   _frameDuration = 0;
+  flipped = false;
 }
 
-Animation::~Animation() {
-}
+Animation::~Animation() {}
 
-void Animation::NextFrame(double delta) {
+void Animation::NextFrame(const double delta) {
   if (_delay >= _frameDuration) {
-    _frameDuration += static_cast<int>(delta*1000);
-    // printf("%d\n", _frameDuration);
-  }
-  else {
-    _srect.x = (int)(_curFcnt%_layout.col) * _layout.offset_x;
-    _srect.y = (int)(_curFcnt/_layout.col) * _layout.offset_y;
-    _curFcnt = (_curFcnt+1)%(_layout.row*_layout.col);
+    _frameDuration += static_cast<int>(delta * 1000);
+  } else {
+    _srect.x = (int)(_curFcnt % _layout.col) * _layout.offset_x;
+    _srect.y = (int)(_curFcnt / _layout.col) * _layout.offset_y;
+    _curFcnt = (_curFcnt + 1) % (_layout.row * _layout.col);
     _frameDuration = 0;
   }
   return;
